@@ -6,7 +6,6 @@ import { User } from "./DataTypes/DataTypes";
 import { v7 } from "uuid";
 import productRouter from './Routers/ProductRouter'
 const app = express();
-
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
