@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+}
+
+.active {
+  background-color: rgb(23 37 84 / var(--tw-bg-opacity));
+  color: white;
+  padding: 0.75rem;
+}
