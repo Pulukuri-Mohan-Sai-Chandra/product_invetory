@@ -1,6 +1,14 @@
 import { DatabaseError } from "sequelize";
 import ProductModel from "../Database/models/ProductModel"
 import {Product} from '../DataTypes/DataTypes'
+
+
+interface ProductMessage{
+    message:string,
+    product_id:string
+}
+
+
 export const getAllProducts = async():Promise<{message:string,object:Product[]|string}>=>{
     try{
         const data = await ProductModel.findAll(); 
@@ -17,17 +25,22 @@ export const getAllProducts = async():Promise<{message:string,object:Product[]|s
         }
     }
 }
-export const addProduct = async(dataObj:Product) =>{
+export const addProduct = async(dataObj:Product):Promise<ProductMessage> =>{
     try{
         const result = await ProductModel.create({
             product_id:dataObj.product_id,
             product_name:dataObj.product_name,
             created_on:dataObj.created_on
         })
-        console.log(result)
-        return result
+        return {
+            message:'Success',
+            product_id:result.product_id
+        }
     }
     catch(e){
-        console.log(e)
+        return{
+            message:"Failure",
+            product_id:""
+        }
     }
 }

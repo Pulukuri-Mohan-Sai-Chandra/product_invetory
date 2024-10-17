@@ -5,7 +5,12 @@ import { createUser } from "./Controllers/User.controller";
 import { User } from "./DataTypes/DataTypes";
 import { v7 } from "uuid";
 import productRouter from './Routers/ProductRouter'
+
+import cors from 'cors'
+
 const app = express();
+
+app.use(cors())
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
