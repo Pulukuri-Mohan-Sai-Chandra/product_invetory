@@ -3,6 +3,7 @@ import App from "../App";
 import ShopComponent from "../Components/Shop/ShopComponent";
 import AdminComponent from "../Components/Admin/AdminComponent";
 import UserSignUp from "../Components/User/UserSignUp";
+import UserLogin from "../Components/User/UserLogin";
 
 const routes: RouteObject[] = [
   {
@@ -11,9 +12,16 @@ const routes: RouteObject[] = [
     children: [
       { path: "shop", element: <ShopComponent /> },
       { path: "admin", element: <AdminComponent /> },
-      { path: "signUp", element: <UserSignUp /> },
     ],
   },
+  {
+    path:"/signup",
+    element:<UserSignUp/>
+  },
+  {
+    path:"/login",
+    element:<UserLogin/>
+  }
 ];
 
 export default createBrowserRouter(routes);

@@ -23,9 +23,6 @@ const Header = (props: {}) => {
       </div>
       <div>
         <ul>
-          <li>
-            <AppLink path="/signUp" link_value="Sign Up" />
-          </li>
         </ul>
       </div>
     </div>
