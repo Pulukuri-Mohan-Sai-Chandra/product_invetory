@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { Input, FormLabel, Button } from "@chakra-ui/react";
+import { Input, FormLabel, Button,Text } from "@chakra-ui/react";
+import axios from 'axios'
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa6";
+import {GoogleLogin} from '@react-oauth/google'
+
 import { User } from "./UserType";
+import { useNavigate } from "react-router-dom";
+
 
 const UserSignUp = () => {
   const [user, SetUser] = useState<User>({
@@ -9,15 +16,26 @@ const UserSignUp = () => {
     user_password: "",
     cnf_password: "",
   });
+  const [googleLogin,SetGoogleLogin] = useState<boolean>(false)
+  const navigate = useNavigate();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     SetUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleClick = () => {
     console.log(user);
   };
+  const google_auth = async()=>{
+    return(
+      <GoogleLogin onSuccess={(res)=>console.log(res)} onError={()=>console.log("Error Occured")} />
+    )
+  }
+
+  const github_auth = ()=>{
+
+  }
   return (
-    <div>
-      <div className="flex flex-col w-max border-2 border-solid border-gray-500 rounded-md mx-auto p-5 my-5">
+    <div className="h-screen bg-gradient-to-tr from-blue-400 to-blue-800">
+      <div className="bg-white w-max rounded-md p-5 mx-auto relative top-24 shadow-md shadow-gray-500 drop-shadow-2xl">
         <FormLabel htmlFor="username">Full Name</FormLabel>
         <Input
           onChange={handleChange}
@@ -59,11 +77,23 @@ const UserSignUp = () => {
         <Button
           className="my-3"
           width="full"
-          variant="outline"
+          variant="solid"
           colorScheme="green"
           onClick={handleClick}
         >
           Submit
+        </Button>
+        <div className="text-center">
+        <Text textStyle="xs"> or</Text>
+        </div>
+        <Button  onClick={google_auth} className="my-3" width="full" variant="outline" colorScheme="red" >
+          <FcGoogle/> <span className="mx-3">Google</span>  
+        </Button>
+        <Button  className="my-3" width="full" variant="solid" colorScheme="gray" >
+          <FaGithub/>
+          <span className="mx-3">
+            Github
+          </span>
         </Button>
       </div>
     </div>

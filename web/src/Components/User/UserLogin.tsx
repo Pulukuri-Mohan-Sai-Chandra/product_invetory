@@ -2,7 +2,7 @@ import { Input, Button, FormLabel } from "@chakra-ui/react";
 
 const UserLogin = () => {
   return (
-    <div className="h-screen bg-gradient-to-tr from-blue-600 to-pink-600">
+    <div className="h-screen bg-gradient-to-tr from-blue-400 to-blue-800">
       <div className="bg-white w-max rounded-md p-5 mx-auto relative top-24 shadow-md shadow-gray-500 drop-shadow-2xl">
         <FormLabel>Email Address</FormLabel>
         <Input placeholder="Email Address" />
